@@ -4,9 +4,9 @@ help:		## Show this help.
 common:
 	@sh -x components/common.sh
 
-frontend:	 ## Install Frontend Component For Roboshop
+frontend:	 common ## Install Frontend Component For Roboshop
     @sh components/frontend.sh
 
-catalogue:   ## Install Catalogue Component For Roboshop
+catalogue:   common ## Install Catalogue Component For Roboshop
     @sh components/catalogue.sh
 

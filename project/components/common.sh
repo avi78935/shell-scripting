@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER_ID=$(id -U)
+USER_ID=$(id -u)
   if [${USER_ID} -ne 0 ]; then
    echo -e "\e[1;31myou should be root user to perform this operation\e[0m"
    exit 1

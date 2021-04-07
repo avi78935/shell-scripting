@@ -5,7 +5,7 @@ LVER=2
 
 COMPONENT=$1
 
-if[ -z $1 ]; then
+if[ -z "$1" ]; then
   echo "Component Name is Required"
   exit 1
 fi

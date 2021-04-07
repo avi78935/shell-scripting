@@ -68,4 +68,13 @@ NODEJS_SETUP() {
   DOWNLOAD_COMPONENT_FROM_GITHUB
   EXTRACT_COMPONENT
   INSTALL_NODEJS
+  SETUP_SERVICE
+}
+
+SETUP_SERVICE() {
+  PRINT "Setup SystemD Service for ${COMPONENT}"
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+  sed -i -e 's/'MONGO_DNSNAME/mongodb.projectdevops.tk/
+  systemctl daemon-reload && systemctl enable catalogue && systemctl restart catalogue
+  STAT $? "STARTING ${COMPONENT} SERVICE"
 }

@@ -16,7 +16,7 @@ yum install -y mongodb-org
 STAT $? "Installing Mongodb"
 
 PRINT "Update MongoDB Configuration File"
-sed -i -e '/s/127.0.0.1/0.0.0.0' /etc/mongod.conf
+sed -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf
 STAT $? "Updating MongoDB Configuration File"
 
 PRINT "Start mongodb"

@@ -13,5 +13,5 @@ cart:		common ## Install Cart Component for RoboShop Project
 frontend:	common ## Install Frontend Web Component for RoboShop Project
 	@sh components/frontend.sh
 
-mongodb:    common ##Install Mongodb web component for RoboShop
-     @sh components/mongodb.sh
+mongodb:    common
+    @sh components/frontend.sh

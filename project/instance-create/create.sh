@@ -9,7 +9,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-INSTANCE_CREATE() {
   COMPONENT=$1
   INSTANCE_EXIST=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[])
   STATE=$(aws ec2 describe-instances     --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[].Instances[].State.Name | xargs)
@@ -23,4 +22,4 @@ IPADDRESS=$(aws ec2 describe-instances     --filters Name=tag:Name,Values=${COMP
 
 sed -e "s/COMPONENT/${COMPONENT}"  -e"/s/IPADDRESS/${IPADDRESS}" record.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id Z10174611DOMQBMGYNMVO --change-batch file:///tmp/record.json
-}
+

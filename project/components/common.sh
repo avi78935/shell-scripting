@@ -35,12 +35,11 @@ USERADD_ROBOSHOP() {
   id roboshop
   if [ $? -eq 0 ]; then
     echo -e "\e[1;35m RoboShop User Already Exists \e[0m"
-    return
    else
      PRINT "CREATE ROBOSHOP APPILICATION USER"
      useradd roboshop
      STAT $? "CREATING ROBOSHOP APPILICATION USER"
- fi
+  fi
 }
 
 DOWNLOAD_COMPONENT_FROM_GITHUB() {

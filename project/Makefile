@@ -10,8 +10,7 @@ catalogue:	common ## Install Catalogue Component for RoboShop Project
 cart:		common ## Install Cart Component for RoboShop Project
 	@sh components/cart.sh
 
-frontend:	common ## Install Frontend Web Component for RoboShop Project
-	@sh components/frontend.sh
-
 mongodb:    common ## in
 	@sh components/mongodb.sh
+frontend:	common ## install
+	@sh components/frontend.sh

@@ -24,3 +24,48 @@ else
    echo "------------------------------------------------------------------------------------------------------------"
 fi
 }
+
+NodeJS_INSTALLITION() {
+  PRINT "INSTALL NODEJS"
+  yum install nodejs make gcc-c++ -y
+  STAT $? "INSTALLITION OF NODESJS"
+}
+
+USERADD_ROBOSHOP() {
+  id roboshop
+  if [ $? -eq 0 ]; then
+    echo -e "\e[1,32m RoboShop User Already Exists \e[0m"
+    return
+   else
+     PRINT "CREATE ROBOSHOP APPILICATION USER"
+     useradd roboshop
+     STAT $? "CREATING ROBOSHOP APPILICATION USER"
+ fi
+}
+
+DOWNLOAD_COMPONENT_FROM_GITHUB() {
+  PRINT "DOWNLOAD ${COMPONENT} FROM GITHUB"
+   curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip"
+  STAT $? "DOWNLOADING ${COMPONENT} FROM GITHUB"
+}
+
+EXTRACT_COMPONENT() {
+  PRINT "EXTRACT ${COMPONENT}"
+   cd /home/roboshop && unzip /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT}
+   STAT $? "EXTARCTING ${COMPONENT}"
+}
+
+INSTALL_NODEJS() {
+  PRINT "INSTALL NODEJS"
+   cd /home/roboshop/${COMPONENT}
+   npm install  --unsafe-perm
+   STAT $? "INSTALLING NODEJS"
+}
+
+NODEJS_SETUP() {
+  NodeJS_INSTALLITION
+  USERADD_ROBOSHOP
+  DOWNLOAD_COMPONENT_FROM_GITHUB
+  EXTRACT_COMPONENT
+  INSTALL_NODEJS
+}

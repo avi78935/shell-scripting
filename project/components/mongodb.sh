@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source components/common.sh
+COMPONENT=mongodb
 
 PRINT "Setup Mongo Repository"
 echo '[mongodb-org-4.2]

@@ -34,7 +34,7 @@ NodeJS_INSTALLITION() {
 USERADD_ROBOSHOP() {
   id roboshop
   if [ $? -eq 0 ]; then
-    echo -e "\e[1,35m RoboShop User Already Exists \e[0m"
+    echo -e "\e[1;35m RoboShop User Already Exists \e[0m"
     return
    else
      PRINT "CREATE ROBOSHOP APPILICATION USER"
@@ -52,7 +52,7 @@ DOWNLOAD_COMPONENT_FROM_GITHUB() {
 EXTRACT_COMPONENT() {
   PRINT "EXTRACT ${COMPONENT}"
    cd /home/roboshop
-    rm -rf ${COMPONENT} && unzip /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT}
+   rm -rf ${COMPONENT} && unzip /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT}
    STAT $? "EXTARCTING ${COMPONENT}"
 }
 

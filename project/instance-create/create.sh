@@ -3,12 +3,13 @@
 LID=lt-0d744f151b5a9254c
 LVER=2
 
+COMPONENT=$1
+
 if [ -z "$1" ]; then
   echo "Component Name is Required"
   exit 1
 fi
 
-COMPONENT=$1
   INSTANCE_EXIST=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[])
   STATE=$(aws ec2 describe-instances     --filters Name=tag:Name,Values=${COMPONENT}  | jq .Reservations[].Instances[].State.Name | xargs)
   if [ -z "${INSTANCE_EXISTS}" -o "STATE" == "terminated" ]; then
